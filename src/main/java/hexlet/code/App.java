@@ -3,12 +3,23 @@
  */
 package hexlet.code;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
+import picocli.CommandLine;
+import picocli.CommandLine.Command;
+
+@Command(
+    name = "gendiff",
+    mixinStandardHelpOptions = true, 
+    version = "0.3",
+    description = "Compares two configuration files and shows a difference."
+)
+public class App implements Runnable{
+
+    @Override
+    public void run() {
+        System.out.println("Hello World!");
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        new CommandLine(new App()).execute(args);
     }
 }

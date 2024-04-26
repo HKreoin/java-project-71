@@ -22,6 +22,7 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
+    implementation("info.picocli:picocli:4.7.5")
 }
 
 testing {
