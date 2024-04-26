@@ -9,6 +9,9 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    jacoco
+    id("checkstyle")
+    id("io.freefair.lombok") version "8.6"
 }
 
 repositories {
