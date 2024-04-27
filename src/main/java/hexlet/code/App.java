@@ -11,7 +11,7 @@ import picocli.CommandLine.Parameters;
 @Command(
     name = "gendiff",
     mixinStandardHelpOptions = true, 
-    version = "0.3",
+    version = "0.5",
     description = "Compares two configuration files and shows a difference."
 )
 public class App implements Runnable{
