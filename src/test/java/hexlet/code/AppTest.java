@@ -3,11 +3,50 @@
  */
 package hexlet.code;
 
+import java.util.Map;
+import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
-    @Test void testApp() {
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+class AppTest {
+    @Test void getDataTest() throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String content = "json/test.json";
+        Path p = Paths.get(content);
+        Map<String, Object> testMap=  Map.of("name", "Jeff", "age", 33, "hobby", "programming");
+        
+        try {
+            Files.createFile(p);
+            var data = objectMapper.writeValueAsBytes(testMap);
+            Files.write(p, data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        var actual = Differ.getData(content);
+        assertEquals("Jeff", actual.get("name"));
+        assertEquals(33, actual.get("age"));
+        assertEquals("programming", actual.get("hobby"));
+    }
+
+    @Test void generateTest() throws IOException {
+        Map<String, Object> map1 = Map.of("host", "hexlet.io", "timeout", 50, "proxy", "123.234.53.22", "follow", false);
+        Map<String, Object> map2 = Map.of("timeout", 20, "verbose", true, "host", "hexlet.io");
+        List<String> listExpected = List.of("{", "- follow: false", "  host: hexlet.io", "- proxy: 123.234.53.22", "- timeout: 50", "+ timeout: 20", "+ verbose: true");
+        String expected = String.join("\n  ", listExpected) + "\n}";
+        assertEquals(expected, Differ.generate(map1, map2));
+
+        /*byte[] expected = (String.join("\n  ", listExpected) + "\n}").getBytes();
+        String content = "json/test.json";
+        Path p = Paths.get(content);
+        Files.write(p, expected);
+        */
     }
 }
