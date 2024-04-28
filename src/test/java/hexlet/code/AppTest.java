@@ -18,21 +18,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class AppTest {
     @Test void getDataTest() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        String content = "json/test.json";
+        String content = "src/test/resources/test.json";
         Path p = Paths.get(content);
-        Map<String, Object> testMap =  Map.of("name", "Jeff", "age", 33, "hobby", "programming");
-
-        try {
+        Map<String, Object> testMap =  Map.of("name", "Jeff", "age", 22, "hobby", "programming");
+        if (Files.notExists(p)) {
             Files.createFile(p);
-            var data = objectMapper.writeValueAsBytes(testMap);
-            Files.write(p, data);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
+        var data = objectMapper.writeValueAsBytes(testMap);
+        Files.write(p, data);
         var actual = Differ.getData(content);
+
         assertEquals("Jeff", actual.get("name"));
-        assertEquals(33, actual.get("age"));
+        assertEquals(22, actual.get("age"));
         assertEquals("programming", actual.get("hobby"));
     }
 
@@ -48,13 +45,14 @@ class AppTest {
             "host", "hexlet.io");
         List<String> listExpected = List.of(
             "{",
-            "- follow: false",
-            "  host: hexlet.io",
-            "- proxy: 123.234.53.22",
-            "- timeout: 50",
-            "+ timeout: 20",
-            "+ verbose: true");
-        String expected = String.join("\n  ", listExpected) + "\n}";
+            "  - follow: false",
+            "    host: hexlet.io",
+            "  - proxy: 123.234.53.22",
+            "  - timeout: 50",
+            "  + timeout: 20",
+            "  + verbose: true",
+            "}");
+        String expected = String.join("\n", listExpected);
         assertEquals(expected, Differ.generate(map1, map2));
     }
 }
