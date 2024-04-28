@@ -4,7 +4,6 @@
 package hexlet.code;
 
 import java.util.concurrent.Callable;
-import java.lang.Runnable;
 
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
@@ -17,7 +16,7 @@ import picocli.CommandLine.Parameters;
     version = "0.5",
     description = "Compares two configuration files and shows a difference."
 )
-public class App implements Runnable{
+public class App implements Callable<Integer>{
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]", paramLabel = "format")
     String format = "stylish";
 
@@ -27,11 +26,15 @@ public class App implements Runnable{
     String filepath2;
 
     @Override
-    public void run() {
-        System.out.println("Hello World!");
+    public Integer call () throws Exception {
+        var file1 = Differ.getData(filepath1);
+        var file2 = Differ.getData(filepath2);
+        System.out.println(Differ.generate(file1, file2));
+        return 0;
     }
 
     public static void main(String[] args) {
-        new CommandLine(new App()).execute(args);
+        int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
     }
 }
