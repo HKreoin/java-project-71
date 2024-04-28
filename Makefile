@@ -12,4 +12,7 @@ build-run: build run
 report:
 	./gradlew jacocoTestReport
 
+test:
+	./gradlew test
+
 .PHONY: build
