@@ -16,13 +16,13 @@ class Differ {
     public static Map<String, Object> getData(String filePath) throws Exception {
         Path p = Paths.get(filePath);
         ObjectMapper objectMapper = new ObjectMapper();
-        var file = objectMapper.readValue(Files.readString(p), new TypeReference<Map<String, Object>>(){});
+        var file = objectMapper.readValue(Files.readString(p), new TypeReference<Map<String, Object>>() { });
         return file;
     }
 
-    public static String generate(Map<String, Object> file1, Map<String, Object> file2){
+    public static String generate(Map<String, Object> file1, Map<String, Object> file2) {
         var treeMap = new TreeMap<String, Object>();
-        List<String> list = new ArrayList<>(); 
+        List<String> list = new ArrayList<>();
         treeMap.putAll(file1);
         treeMap.putAll(file2);
 

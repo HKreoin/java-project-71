@@ -12,21 +12,21 @@ import picocli.CommandLine.Parameters;
 
 @Command(
     name = "gendiff",
-    mixinStandardHelpOptions = true, 
+    mixinStandardHelpOptions = true,
     version = "0.5",
     description = "Compares two configuration files and shows a difference."
 )
-public class App implements Callable<Integer>{
+public class App implements Callable<Integer> {
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]", paramLabel = "format")
     String format = "stylish";
 
     @Parameters(index = "0", description = "path to first file", paramLabel = "filepath1")
     String filepath1;
-    @Parameters(index = "1", description = "path to second file",paramLabel = "filepath2")
+    @Parameters(index = "1", description = "path to second file", paramLabel = "filepath2")
     String filepath2;
 
     @Override
-    public Integer call () throws Exception {
+    public Integer call() throws Exception {
         var file1 = Differ.getData(filepath1);
         var file2 = Differ.getData(filepath2);
         System.out.println(Differ.generate(file1, file2));
