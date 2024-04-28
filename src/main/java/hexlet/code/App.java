@@ -3,6 +3,9 @@
  */
 package hexlet.code;
 
+import java.util.concurrent.Callable;
+import java.lang.Runnable;
+
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
