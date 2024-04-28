@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -20,8 +20,8 @@ class AppTest {
         ObjectMapper objectMapper = new ObjectMapper();
         String content = "json/test.json";
         Path p = Paths.get(content);
-        Map<String, Object> testMap=  Map.of("name", "Jeff", "age", 33, "hobby", "programming");
-        
+        Map<String, Object> testMap =  Map.of("name", "Jeff", "age", 33, "hobby", "programming");
+
         try {
             Files.createFile(p);
             var data = objectMapper.writeValueAsBytes(testMap);
@@ -37,16 +37,24 @@ class AppTest {
     }
 
     @Test void generateTest() throws IOException {
-        Map<String, Object> map1 = Map.of("host", "hexlet.io", "timeout", 50, "proxy", "123.234.53.22", "follow", false);
-        Map<String, Object> map2 = Map.of("timeout", 20, "verbose", true, "host", "hexlet.io");
-        List<String> listExpected = List.of("{", "- follow: false", "  host: hexlet.io", "- proxy: 123.234.53.22", "- timeout: 50", "+ timeout: 20", "+ verbose: true");
+        Map<String, Object> map1 = Map.of(
+            "host", "hexlet.io",
+            "timeout", 50,
+            "proxy", "123.234.53.22",
+            "follow", false);
+        Map<String, Object> map2 = Map.of(
+            "timeout", 20,
+            "verbose", true,
+            "host", "hexlet.io");
+        List<String> listExpected = List.of(
+            "{",
+            "- follow: false",
+            "  host: hexlet.io",
+            "- proxy: 123.234.53.22",
+            "- timeout: 50",
+            "+ timeout: 20",
+            "+ verbose: true");
         String expected = String.join("\n  ", listExpected) + "\n}";
         assertEquals(expected, Differ.generate(map1, map2));
-
-        /*byte[] expected = (String.join("\n  ", listExpected) + "\n}").getBytes();
-        String content = "json/test.json";
-        Path p = Paths.get(content);
-        Files.write(p, expected);
-        */
     }
 }
