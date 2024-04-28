@@ -4,3 +4,5 @@
 # Ignore Gradle build output directory
 build
 json/test.json
+bin/test/test.json
+src/test/resources/test.json
