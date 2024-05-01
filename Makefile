@@ -15,4 +15,7 @@ report:
 test:
 	./gradlew test
 
+linter:
+	./gradlew checkstyleMain
+
 .PHONY: build
