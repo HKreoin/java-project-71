@@ -48,3 +48,7 @@ application {
     // Define the main class for the application.
     mainClass.set("hexlet.code.App")
 }
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+}
