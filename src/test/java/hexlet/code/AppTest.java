@@ -20,7 +20,11 @@ class AppTest {
         ObjectMapper objectMapper = new ObjectMapper();
         String content = "src/test/resources/test.json";
         Path p = Paths.get(content);
+        Path p1 = Paths.get("src/test/resources");
         Map<String, Object> testMap =  Map.of("name", "Jeff", "age", 22, "hobby", "programming");
+        if (Files.notExists(p1)) {
+            Files.createDirectories(p1);
+        }
         if (Files.notExists(p)) {
             Files.createFile(p);
         }
