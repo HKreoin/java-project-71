@@ -12,6 +12,7 @@ plugins {
     jacoco
     id("checkstyle")
     id("io.freefair.lombok") version "8.6"
+    id("com.adarshr.test-logger") version "4.0.0"
 }
 
 repositories {
