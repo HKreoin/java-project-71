@@ -3,4 +3,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/d06795edcb9b6fd2ad51/maintainability)](https://codeclimate.com/github/HKreoin/java-project-71/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d06795edcb9b6fd2ad51/test_coverage)](https://codeclimate.com/github/HKreoin/java-project-71/test_coverage)
 [![asciicast](https://asciinema.org/a/haRQqMQmHtiSmlHsvynd6UE8B.svg)](https://asciinema.org/a/haRQqMQmHtiSmlHsvynd6UE8B)
-[![asciicast](https://asciinema.org/a/ZXoWk5wJ7uZHgXgo7ZU4FGGi2.svg)](https://asciinema.org/a/ZXoWk5wJ7uZHgXgo7ZU4FGGi2)
+[![asciicast](https://asciinema.org/a/Mjod7mkeC3vzB0kyUWv3dg0Ts.svg)](https://asciinema.org/a/Mjod7mkeC3vzB0kyUWv3dg0Ts)
