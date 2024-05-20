@@ -8,10 +8,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-public class YamlParser extends Parser{
+public class YamlParser extends Parser {
     private Path path;
 
-    public YamlParser(Path path){
+    public YamlParser(Path path) {
         this.path = path;
     }
 

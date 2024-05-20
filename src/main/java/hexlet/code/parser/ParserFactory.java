@@ -7,8 +7,8 @@ public class ParserFactory {
     public Parser createParser(String filepath) throws Exception {
         Path path = Paths.get(filepath);
         String extension = getExtension(filepath);
-        Parser parser = null; 
-        parser = switch(extension) {
+        Parser parser = null;
+        parser = switch (extension) {
             case "yaml" -> new YamlParser(path);
             case "json" -> new JsonParser(path);
             default -> throw new IllegalArgumentException("Illegal extension");
