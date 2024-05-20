@@ -4,21 +4,8 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.ArrayList;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.Files;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 class Differ {
-
-    public static Map<String, Object> getData(String filePath) throws Exception {
-        Path p = Paths.get(filePath);
-        ObjectMapper objectMapper = new ObjectMapper();
-        var file = objectMapper.readValue(Files.readString(p), new TypeReference<Map<String, Object>>() { });
-        return file;
-    }
 
     public static String generate(Map<String, Object> file1, Map<String, Object> file2) {
         var treeMap = new TreeMap<String, Object>();

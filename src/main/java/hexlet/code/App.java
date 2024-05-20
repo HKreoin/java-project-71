@@ -5,6 +5,7 @@ package hexlet.code;
 
 import java.util.concurrent.Callable;
 
+import hexlet.code.parser.ParserFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -27,8 +28,8 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        var file1 = Differ.getData(filepath1);
-        var file2 = Differ.getData(filepath2);
+        var file1 = new ParserFactory().createParser(filepath1).getData();
+        var file2 = new ParserFactory().createParser(filepath2).getData();
         System.out.println(Differ.generate(file1, file2));
         return 0;
     }

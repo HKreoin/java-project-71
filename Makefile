@@ -1,5 +1,8 @@
 run-dist:
-	./build/install/app/bin/app json/file1.json json/file2.json
+	./build/install/app/bin/app src/test/resources/file1.json src/test/resources/file2.json
+
+run-dist:
+	./build/install/app/bin/app src/test/resources/file1.yaml src/test/resources/file2.yaml
 
 build:
 	./gradlew clean build

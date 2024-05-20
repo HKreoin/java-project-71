@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import hexlet.code.parser.ParserFactory;
+
 class AppTest {
     @Test void getDataTest() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -30,7 +32,7 @@ class AppTest {
         }
         var data = objectMapper.writeValueAsBytes(testMap);
         Files.write(p, data);
-        var actual = Differ.getData(content);
+        var actual = new ParserFactory().createParser(content).getData();
 
         assertEquals("Jeff", actual.get("name"));
         assertEquals(22, actual.get("age"));
