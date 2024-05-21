@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ParserFactory {
-    public Parser createParser(String filepath) throws Exception {
+    public Parser createParser(String filepath) {
         Path path = Paths.get(filepath);
         String extension = getExtension(filepath);
         Parser parser = null;

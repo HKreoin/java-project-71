@@ -1,13 +1,17 @@
 package hexlet.code;
 
-import java.util.Map;
 import java.util.TreeMap;
+
+import hexlet.code.parser.ParserFactory;
+
 import java.util.List;
 import java.util.ArrayList;
 
 class Differ {
 
-    public static String generate(Map<String, Object> file1, Map<String, Object> file2) {
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        var file1 = new ParserFactory().createParser(filepath1).getData();
+        var file2 = new ParserFactory().createParser(filepath2).getData();
         var treeMap = new TreeMap<String, Object>();
         List<String> list = new ArrayList<>();
         treeMap.putAll(file1);
