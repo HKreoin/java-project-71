@@ -1,18 +1,21 @@
 package hexlet.code;
 
-import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 class Format {
 
-    public static String reflect(List<String> list, String format) {
+    public static String reflect(Map <String, Object> map, String format) {
         return switch (format) {
-            case "stylish" -> stylish(list);
+            case "stylish" -> stylish(map);
             default -> throw new IllegalArgumentException("Unexpected value: " + format);
         };
     }
 
-    private static String stylish(List<String> list) {
-        return String.join("\n", list);
+    private static String stylish(Map<String, Object> map) {
+        return map.keySet().stream()
+            .map(key -> key + ": " + map.get(key))
+            .collect(Collectors.joining("\n  ", "{\n  ", "\n}"));
     }
 
 }
