@@ -51,6 +51,6 @@ class AppTest {
             "  + verbose: true",
             "}");
         String expected = String.join("\n", listExpected);
-        assertEquals(expected, Differ.generate(filepath1, filepath2));
+        assertEquals(expected, Format.reflect(Differ.generate(filepath1, filepath2), "stylish"));
     }
 }
