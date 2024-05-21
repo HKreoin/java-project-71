@@ -4,5 +4,4 @@
 # Ignore Gradle build output directory
 build
 json/test.json
-bin/test/test.json
-bin/
+bin
