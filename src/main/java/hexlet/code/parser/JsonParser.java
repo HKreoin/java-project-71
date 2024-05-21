@@ -18,7 +18,6 @@ public class JsonParser extends Parser {
     @Override
     public Map<String, Object> getData() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        var file = objectMapper.readValue(Files.readString(path), new TypeReference<Map<String, Object>>() { });
-        return file;
+        return objectMapper.readValue(Files.readString(path), new TypeReference<Map<String, Object>>() { });
     }
 }

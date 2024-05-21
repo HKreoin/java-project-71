@@ -5,7 +5,6 @@ package hexlet.code;
 
 import java.util.Map;
 import java.util.List;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -39,16 +38,9 @@ class AppTest {
         assertEquals("programming", actual.get("hobby"));
     }
 
-    @Test void generateTest() throws IOException {
-        Map<String, Object> map1 = Map.of(
-            "host", "hexlet.io",
-            "timeout", 50,
-            "proxy", "123.234.53.22",
-            "follow", false);
-        Map<String, Object> map2 = Map.of(
-            "timeout", 20,
-            "verbose", true,
-            "host", "hexlet.io");
+    @Test void generateTest() throws Exception {
+        String filepath1 = "src/test/resources/filepath1.json";
+        String filepath2 = "src/test/resources/filepath2.json";
         List<String> listExpected = List.of(
             "{",
             "  - follow: false",
@@ -59,6 +51,6 @@ class AppTest {
             "  + verbose: true",
             "}");
         String expected = String.join("\n", listExpected);
-        assertEquals(expected, Differ.generate(map1, map2));
+        assertEquals(expected, Differ.generate(filepath1, filepath2));
     }
 }

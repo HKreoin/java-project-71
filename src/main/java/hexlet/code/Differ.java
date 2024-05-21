@@ -1,15 +1,14 @@
 package hexlet.code;
 
-import java.util.TreeMap;
-
 import hexlet.code.parser.ParserFactory;
 
+import java.util.TreeMap;
 import java.util.List;
 import java.util.ArrayList;
 
 class Differ {
 
-    public static String generate(String filepath1, String filepath2) throws Exception {
+    public static List<String> generate(String filepath1, String filepath2) throws Exception {
         var file1 = new ParserFactory().createParser(filepath1).getData();
         var file2 = new ParserFactory().createParser(filepath2).getData();
         var treeMap = new TreeMap<String, Object>();
@@ -33,7 +32,7 @@ class Differ {
         });
         list.add(0, "{");
         list.add("}");
-        String difference = String.join("\n", list);
-        return difference;
+
+        return list;
     }
 }

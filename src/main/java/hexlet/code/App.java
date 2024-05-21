@@ -5,7 +5,6 @@ package hexlet.code;
 
 import java.util.concurrent.Callable;
 
-import hexlet.code.parser.ParserFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -28,7 +27,7 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        System.out.println(Differ.generate(filepath1, filepath2));
+        System.out.println(Format.reflect(Differ.generate(filepath1, filepath2), format));
         return 0;
     }
 

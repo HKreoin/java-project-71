@@ -18,7 +18,6 @@ public class ParserFactory {
 
     public static String getExtension(String filepath) {
         int dotIndex = filepath.lastIndexOf('.') + 1;
-        String extension = filepath.substring(dotIndex);
-        return extension;
+        return filepath.substring(dotIndex);
     }
 }
