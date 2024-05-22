@@ -13,6 +13,12 @@ run-dist3:
 run-dist4:
 	./build/install/app/bin/app src/test/resources/file1.yaml src/test/resources/file2.yaml
 
+run-dist5:
+	./build/install/app/bin/app -f plain src/test/resources/file1.json src/test/resources/file2.json
+
+run-dist6:
+	./build/install/app/bin/app src/test/resources/file1.yaml src/test/resources/file2.yaml
+
 build:
 	./gradlew clean build
 
