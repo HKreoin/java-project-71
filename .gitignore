@@ -6,3 +6,4 @@ build
 json/test.json
 bin
 .vscode
+src/test/resources/test.json

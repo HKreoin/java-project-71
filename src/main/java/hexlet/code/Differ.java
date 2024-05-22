@@ -18,17 +18,7 @@ class Differ {
         for (var entry : map.entrySet()) {
             var key = entry.getKey();
             var value = entry.getValue();
-            if (value == null) {
-                entry.setValue("null");
-            }
-            if (file1.containsKey(key) && file1.get(key) == null) {
-                file1.put(key, "null");
-            }
-            if (file2.containsKey(key) && file2.get(key) == null) {
-                file2.put(key, "null");
-            }
-            System.out.println(file2.get(key));
-            if (file1.containsKey(key) & file2.containsKey(key) && file1.get(key).equals(file2.get(key))) {
+            if (hasKeyAndEquals(file1, file2, key)) {
                 result.put("  " + key, value);
             } else {
                 if (file1.containsKey(key)) {
@@ -40,5 +30,17 @@ class Differ {
             }
         }
         return result;
+    }
+    public static boolean hasKeyAndEquals(Map<String, Object> map1, Map<String, Object> map2, String key) {
+        if (map1.containsKey(key) && map2.containsKey(key)) {
+            if (map1.get(key) == null) {
+                return map2.get(key) == null;
+            }
+            if (map2.get(key) == null) {
+                return false;
+            }
+            return map1.get(key).equals(map2.get(key));
+        }
+        return false;
     }
 }
