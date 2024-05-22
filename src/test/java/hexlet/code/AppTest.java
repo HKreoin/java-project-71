@@ -4,10 +4,10 @@
 package hexlet.code;
 
 import java.util.Map;
-import java.util.List;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,18 +39,11 @@ class AppTest {
     }
 
     @Test void generateTest() throws Exception {
-        String filepath1 = "src/test/resources/filepath1.json";
-        String filepath2 = "src/test/resources/filepath2.json";
-        List<String> listExpected = List.of(
-            "{",
-            "  - follow: false",
-            "    host: hexlet.io",
-            "  - proxy: 123.234.53.22",
-            "  - timeout: 50",
-            "  + timeout: 20",
-            "  + verbose: true",
-            "}");
-        String expected = String.join("\n", listExpected);
-        assertEquals(expected, Format.reflect(Differ.generate(filepath1, filepath2), "stylish"));
+        String filepath1 = "src/test/resources/file1.json";
+        String filepath2 = "src/test/resources/file2.json";
+        String testFile = "src/test/resources/testFile";
+
+        String expected = new String(Files.readAllBytes(Paths.get(testFile)), StandardCharsets.UTF_8);
+        assertEquals(expected, Differ.generate(filepath1, filepath2, "stylish"));
     }
 }

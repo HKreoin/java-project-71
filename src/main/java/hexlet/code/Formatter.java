@@ -3,7 +3,7 @@ package hexlet.code;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-class Format {
+class Formatter {
 
     public static String reflect(Map<String, Object> map, String format) {
         return switch (format) {

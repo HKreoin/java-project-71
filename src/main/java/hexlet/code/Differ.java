@@ -8,7 +8,7 @@ import java.util.Map;
 
 class Differ {
 
-    public static Map<String, Object> generate(String filepath1, String filepath2) throws Exception {
+    public static String generate(String filepath1, String filepath2, String format) throws Exception {
         var file1 = new ParserFactory().createParser(filepath1).getData();
         var file2 = new ParserFactory().createParser(filepath2).getData();
         var map = new TreeMap<String, Object>();
@@ -29,7 +29,7 @@ class Differ {
                 }
             }
         }
-        return result;
+        return Formatter.reflect(result, format);
     }
     public static boolean hasKeyAndEquals(Map<String, Object> map1, Map<String, Object> map2, String key) {
         if (map1.containsKey(key) && map2.containsKey(key)) {
