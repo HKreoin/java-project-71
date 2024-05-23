@@ -9,3 +9,6 @@ setup:
 
 build-run:
 	make -C app build-run:
+
+report:
+	make -C app report
