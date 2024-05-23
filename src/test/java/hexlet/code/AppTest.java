@@ -55,4 +55,13 @@ class AppTest {
         String expected = new String(Files.readAllBytes(Paths.get(testFile)), StandardCharsets.UTF_8);
         assertEquals(expected, Differ.generate(filepath1, filepath2, "plain"));
     }
+
+    @Test void generateJsonTest() throws Exception {
+        String filepath1 = "src/test/resources/file1.json";
+        String filepath2 = "src/test/resources/file2.json";
+        String testFile = "src/test/resources/testFile.json";
+
+        String expected = new String(Files.readAllBytes(Paths.get(testFile)), StandardCharsets.UTF_8);
+        assertEquals(expected, Differ.generate(filepath1, filepath2, "json"));
+    }
 }

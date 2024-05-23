@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 class Formatter {
 
-    public static String reflect(Map<String, Object> map, String format) {
+    public static String reflect(Map<String, Object> map, String format) throws JsonProcessingException {
         return switch (format) {
             case "stylish" -> stylish(map);
             case "plain" -> plain(map);
+            case "json" -> json(map);
             default -> throw new IllegalArgumentException("Unexpected value: " + format);
         };
     }
@@ -59,6 +63,11 @@ class Formatter {
             }
         }
         return builder.toString().substring(0, builder.toString().length() - 1);
+    }
+
+    private static String json(Map<String, Object> map) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(map);
     }
 
 }
