@@ -1,3 +1,6 @@
+setup:
+	./gradlew wrapper --gradle-version 8.5
+
 run-dist:
 	./build/install/app/bin/app
 
@@ -15,7 +18,7 @@ report:
 test:
 	./gradlew test
 
-linter:
+lint:
 	./gradlew checkstyleMain
 
 .PHONY: build
