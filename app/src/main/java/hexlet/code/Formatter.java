@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-class Formatter {
+public class Formatter {
 
     public static String reflect(Map<String, Object> map, String format) throws JsonProcessingException {
         return switch (format) {
