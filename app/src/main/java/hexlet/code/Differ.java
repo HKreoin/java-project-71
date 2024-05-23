@@ -6,7 +6,7 @@ import java.util.TreeMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-class Differ {
+public class Differ {
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
         var file1 = new ParserFactory().createParser(filepath1).getData();
