@@ -1,10 +1,9 @@
 package hexlet.code;
 
 import java.util.Map;
+import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
-
-import org.checkerframework.common.initializedfields.qual.EnsuresInitializedFields.List;
 
 class Formatter {
 
@@ -25,28 +24,41 @@ class Formatter {
     private static String plain(Map<String, Object> map) {
         var builder = new StringBuilder();
         var resultMap = new LinkedHashMap<String, Object>();
-        map.keySet().stream()
-            .map(key -> map.get(key) != null && map.get(key).getClass() == List.class
-                ? resultMap.put(key, "[complex value]")
-                : resultMap.put(key, map.get(key)))
-            .toList();
+        for (var entry : map.entrySet()) {
+            var key = entry.getKey();
+            var value = entry.getValue();
+            resultMap.put(key, value);
+            if (value instanceof String) {
+                resultMap.put(key, "'" + value + "'");
+            } else if (value instanceof List || value instanceof Map) {
+                resultMap.put(key, "[complex value]");
+            } else {
+                resultMap.put(key, value);
+            }
+        }
 
         for (var entry: resultMap.entrySet()) {
             var key = entry.getKey();
             if (key.charAt(0) == '-') {
+                builder.append("Property '");
+                builder.append(key.substring(2));
                 if (resultMap.containsKey("+ " + key.substring(2))) {
-                    builder.append("Property '" + key.substring(2)
-                        + "' was updated. From " + resultMap.get("- " + key.substring(2))
-                        + " to " + resultMap.get("+ " + key.substring(2)) + "\n");
+                    builder.append("' was updated. From ");
+                    builder.append(resultMap.get("- " + key.substring(2)));
+                    builder.append(" to ");
+                    builder.append(resultMap.get("+ " + key.substring(2)));
                 } else {
-                    builder.append("Property '" + key.substring(2) + "' was removed\n");
+                    builder.append("' was removed");
                 }
-            } else if (key.charAt(0) == '+') {
-                builder.append("Property '" + key.substring(2)
-                    + "' was added with value: " + resultMap.get("+ " + key.substring(2)) + "\n");
+                builder.append("\n");
+            } else if (key.charAt(0) == '+' && !resultMap.containsKey("- " + key.substring(2))) {
+                builder.append("Property '");
+                builder.append(key.substring(2));
+                builder.append("' was added with value: " + resultMap.get("+ " + key.substring(2)));
+                builder.append("\n");
             }
         }
-        return builder.toString();
+        return builder.toString().substring(0, builder.toString().length() - 1);
     }
 
 }

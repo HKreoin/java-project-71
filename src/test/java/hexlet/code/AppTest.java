@@ -46,4 +46,13 @@ class AppTest {
         String expected = new String(Files.readAllBytes(Paths.get(testFile)), StandardCharsets.UTF_8);
         assertEquals(expected, Differ.generate(filepath1, filepath2, "stylish"));
     }
+
+    @Test void generatePlainTest() throws Exception {
+        String filepath1 = "src/test/resources/file1.yaml";
+        String filepath2 = "src/test/resources/file2.yaml";
+        String testFile = "src/test/resources/testFilePlain";
+
+        String expected = new String(Files.readAllBytes(Paths.get(testFile)), StandardCharsets.UTF_8);
+        assertEquals(expected, Differ.generate(filepath1, filepath2, "plain"));
+    }
 }
