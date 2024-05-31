@@ -31,6 +31,11 @@ public class Differ {
         }
         return Formatter.reflect(result, format);
     }
+
+    public static String generate(String filepath1, String filpath2) throws Exception {
+        return generate(filepath1, filpath2, "stylish");
+    }
+
     public static boolean hasKeyAndEquals(Map<String, Object> map1, Map<String, Object> map2, String key) {
         if (map1.containsKey(key) && map2.containsKey(key)) {
             if (map1.get(key) == null) {
