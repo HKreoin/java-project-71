@@ -7,6 +7,9 @@ run-dist:
 build:
 	./gradlew clean build
 
+clean:
+	./gradlew clean install
+
 run:
 	./gradlew run
 
