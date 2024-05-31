@@ -21,4 +21,7 @@ test:
 lint:
 	./gradlew checkstyleMain
 
+check-deps:
+	./gradlew dependencyUpdates -Drevision=release
+
 .PHONY: build

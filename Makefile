@@ -19,4 +19,7 @@ build:
 run-dist:
 	make -C app run-dist
 
+check-deps:
+	make -C app check-deps
+
 .PHONY: build
