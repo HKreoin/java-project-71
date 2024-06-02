@@ -11,3 +11,5 @@ src/test/resources/test.json
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+# Ignore Gradle build output directory
+build
