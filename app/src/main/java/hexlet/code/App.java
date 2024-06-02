@@ -20,12 +20,12 @@ public class App implements Callable<Integer> {
     @Option(names = {"-f", "--format"},
             description = "output format [default: stylish, plain, json]",
             paramLabel = "format")
-    String format = "stylish";
+    private String format = "stylish";
 
     @Parameters(index = "0", description = "path to first file", paramLabel = "filepath1")
-    String filepath1;
+    private String filepath1;
     @Parameters(index = "1", description = "path to second file", paramLabel = "filepath2")
-    String filepath2;
+    private String filepath2;
 
     @Override
     public Integer call() throws Exception {
