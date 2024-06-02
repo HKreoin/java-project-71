@@ -16,7 +16,7 @@ import picocli.CommandLine.Parameters;
     version = "0.5",
     description = "Compares two configuration files and shows a difference."
 )
-public class App implements Callable<Integer> {
+public final class App implements Callable<Integer> {
     @Option(names = {"-f", "--format"},
             description = "output format [default: stylish, plain, json]",
             paramLabel = "format")

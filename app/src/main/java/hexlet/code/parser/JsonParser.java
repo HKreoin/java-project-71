@@ -7,7 +7,7 @@ import java.util.Map;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonParser extends Parser {
+public final class JsonParser extends Parser {
 
     private Path path;
 

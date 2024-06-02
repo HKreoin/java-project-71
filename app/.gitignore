@@ -6,6 +6,7 @@ build/
 json/test.json
 bin
 .vscode
+app/src/test/resources/test.json
 src/test/resources/test.json
 
 !gradle/wrapper/gradle-wrapper.jar

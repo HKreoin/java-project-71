@@ -22,8 +22,7 @@ class AppTest {
         String content = "src/test/resources/test.json";
         Path p = Paths.get(content);
         Path p1 = Paths.get("src/test/resources");
-        int age = 22;
-        Map<String, Object> testMap =  Map.of("name", "Jeff", "age", age, "hobby", "programming");
+        Map<String, Object> testMap =  Map.of("name", "Jeff", "age", "22", "hobby", "programming");
         if (Files.notExists(p1)) {
             Files.createDirectories(p1);
         }
@@ -35,7 +34,7 @@ class AppTest {
         var actual = new ParserFactory().createParser(content).getData();
 
         assertEquals("Jeff", actual.get("name"));
-        assertEquals(age, actual.get("age"));
+        assertEquals("22", actual.get("age"));
         assertEquals("programming", actual.get("hobby"));
     }
 

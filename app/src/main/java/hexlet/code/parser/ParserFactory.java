@@ -3,7 +3,7 @@ package hexlet.code.parser;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ParserFactory {
+public final class ParserFactory {
     public Parser createParser(String filepath) {
         Path path = Paths.get(filepath);
         String extension = getExtension(filepath);
